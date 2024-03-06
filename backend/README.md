@@ -16,7 +16,8 @@
 15. Apply migration `python .\manage.py migrate`
 16. Register Page model in pages/admin.py 
 17. Delete test view.py
-18. Add get_pages view
+18. Create get_pages view
+18. Create get_page view for single page by uid
 
 ### Common commands
 `python .\manage.py runserver` - run server
