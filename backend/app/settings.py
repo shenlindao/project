@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+APPEND_SLASH = False
+   
+ALLOWED_HOSTS = ['*']
+
+# CSRF_COOKIE_SECURE = False
 
 # Application definition
 
@@ -39,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My apps
     'pages',
+    'orders',
 ]
 
 MIDDLEWARE = [
