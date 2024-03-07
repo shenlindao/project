@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 APPEND_SLASH = False
    
+ALLOWED_HOSTS = ['*']
+
+CSRF_COOKIE_SECURE = False
 
 # Application definition
 

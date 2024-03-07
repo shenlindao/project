@@ -1,25 +1,31 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import json
 from .models import Order
 
-def order_list(request):
+@csrf_exempt
+def create_order(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
+        try:
+            data = json.loads(request.body)
 
-        new_order = Order(
-            name=data['order_name'],
-            phone=data['order_phone'],
-            email=data['order_email'],
-            created_at=data['created_at']
-        )
-        new_order.save()
+            new_order = Order(
+                name=data['order_name'],
+                phone=data['order_phone'],
+                email=data['order_email'],
+            )
+            new_order.save()
 
-        response_data = {
-            'message': 'Данные успешно сохранены',
-            'data': data
-        }
-        
-        return JsonResponse(response_data)
+            response_data = {
+                'message': 'Данные успешно сохранены',
+                'id': new_order.id
+            }
 
-    return HttpResponse('Метод GET не поддерживается')
+            return JsonResponse(response_data)
+
+        except KeyError:
+            return JsonResponse({'error': 'Invalid request body'}, status=422)
+
+
+    return HttpResponse('Используйте только POST запрос')
