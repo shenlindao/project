@@ -5,6 +5,7 @@ class Page(models.Model):
     MAX_TITLE_LENGTH = 400
     MAX_DESCRIPTION_LENGTH = 2000
     MAX_H1_LENGTH = 100
+    MAX_PATH_LENGTH = 100
 
     id = models.UUIDField (
         primary_key=True,
@@ -41,6 +42,13 @@ class Page(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
         editable=False
+    )
+
+    path = models.TextField(
+        null=False,
+        blank=False,
+        max_length=MAX_PATH_LENGTH,
+        unique=True,
     )
 
     def __str__(self) -> str:

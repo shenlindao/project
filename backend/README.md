@@ -5,7 +5,7 @@
 5. Start project inside backend folder `django-admin startproject app .`
 6. Start and check server `python .\manage.py runserver`
 7. Migrate initial models (users, groups) `python .\manage.py migrate`
-8. Create pages application `python .\manage.py startapp pages`
+8. *Create pages application `python .\manage.py startapp pages`
 9. Add 'pages' app into settings.py INSTALLED_APPS
 10. Add index into pages/views.py
 10. Add urls.py into pages and register index view

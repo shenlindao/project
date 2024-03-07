@@ -12,22 +12,24 @@ def get_pages(request):
             "description": page.description,
             "h1": page.h1,
             "created_at": page.created_at,
-            "updated_at": page.updated_at
+            "updated_at": page.updated_at,
+            "path": page.path,
         })
     return JsonResponse(
         pages_list, safe=False
     )
 
 
-def get_page(request, page_id):
-    page = get_object_or_404(Page, id=page_id)
+def get_page(request, path):
+    print(path)
+    page = get_object_or_404(Page, path=path)
     serialized_page = {
         "id": page.id,
         "title": page.title,
         "description": page.description,
         "h1": page.h1,
         "created_at": page.created_at,
-        "updated_at": page.updated_at
+        "updated_at": page.updated_at,
     }
     return JsonResponse(
         serialized_page, safe=False
